@@ -1,10 +1,9 @@
-import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.material.Button
-import androidx.compose.material.Text
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -13,9 +12,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.ComposeWindow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import theme.Color500
 import theme.CryptomeTheme
 import java.awt.FileDialog
 import java.io.File
@@ -23,13 +26,35 @@ import java.io.File
 fun main() = application {
     CryptomeTheme {
         Window(onCloseRequest = ::exitApplication, title = "EncryptUntil") {
-            app()
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                image()
+                Spacer(modifier = Modifier.height(10.dp))
+                app()
+                Spacer(modifier = Modifier.height(10.dp))
+                dropDownMenu()
+            }
         }
     }
 }
 
 @Composable
-@Preview
+fun image() {
+    Card(
+        modifier = Modifier.size(92.dp),
+        shape = CircleShape
+    ) {
+        Image(
+            painterResource("fingerprint.png"),
+            contentDescription = "",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+    }
+}
+
+@Composable
 fun app() {
 
     // this is test commit
@@ -48,12 +73,55 @@ fun app() {
         Spacer(modifier = Modifier.height(10.dp))
         Button(onClick = {
             file = openFileDialog(window = ComposeWindow(), title = "Choose file", allowedExtensions =
-            listOf("txt"), allowMultiSelection = true)
+                        listOf("txt"), allowMultiSelection = true)
+
             if (file.isNotEmpty()) {
                 filename = file.elementAt(0).toString()
+                CryptoYou.encryptFile(filename, "LETSGO")
             }
+
         }) {
             Text(textBtn)
+        }
+    }
+}
+
+@Composable
+fun dropDownMenu() {
+    var expanded by remember { mutableStateOf(false) }
+    val items = listOf("Encrypt", "Decrypt")
+    var selectedIndex by remember { mutableStateOf(0) }
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Box(modifier = Modifier.width(100.dp).wrapContentSize(Alignment.TopStart)) {
+            //Text(items[selectedIndex], modifier = Modifier.fillMaxWidth().clickable(onClick = { expanded = true }).background(Color.White))
+
+            OutlinedButton(onClick = { expanded = true },
+                modifier= Modifier.height(50.dp).width(100.dp),  //avoid the oval shape
+                shape = CircleShape,
+                border= BorderStroke(1.dp, Color500),
+                contentPadding = PaddingValues(0.dp),  //avoid the little icon
+                colors = ButtonDefaults.outlinedButtonColors(contentColor =  Color500),
+            ) {
+                //Icon(Icons.Default.Add, contentDescription = "content description")
+                Text(items[selectedIndex])
+            }
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                modifier = Modifier.width(100.dp).background(Color500),
+            ) {
+                items.forEachIndexed { index, s ->
+                    DropdownMenuItem(onClick = {
+                        selectedIndex = index
+                        expanded = false
+                    }) {
+                        Text(text = s, color = Color.White)
+                    }
+                }
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ repositories {
 
 dependencies {
     implementation(compose.desktop.currentOs)
+    implementation("androidx.compose.material:material:1.1.0-alpha05")
 }
 
 tasks.withType<KotlinCompile>() {
@@ -29,7 +30,7 @@ compose.desktop {
         mainClass = "MainKt"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "cryprome-jetpack"
+            packageName = "EncryptUntil"
             packageVersion = "1.0.0"
         }
     }

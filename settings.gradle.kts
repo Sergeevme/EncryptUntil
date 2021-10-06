@@ -6,5 +6,5 @@ pluginManagement {
     }
     
 }
-rootProject.name = "cryprome-jetpack"
+rootProject.name = "EncryptUntil"
 
