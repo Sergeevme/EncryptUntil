@@ -122,7 +122,6 @@ public class Blowfish {
         // ( try to get all information if the padding doesn't seem to be correct)
         if (nPadByte > 8) nPadByte = 0;
 
-
         // calculate the real size of this message
         nNumOfBytes -= nPadByte;
 

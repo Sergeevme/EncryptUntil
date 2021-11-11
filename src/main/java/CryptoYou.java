@@ -5,14 +5,13 @@ import java.util.Base64;
 
 public class CryptoYou {
 
-    public static String filename = "Go.txt";
+    public static String filename = "files/Cryptome.txt";
     public static String filenameDec = "GoBlowEnc.txt";
 
     // Driver code
     public static void main(String[] args) throws IOException {
         // Init key
         String key = "thisIsTheKey";
-        String filename = "C:\\Users\\NIKITA SERGEEV\\IdeaProjects\\EncryptUntil\\files\\Cryptome.txt";
 
         // Crypt
         encryptFile(filename, key);
