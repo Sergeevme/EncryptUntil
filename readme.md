@@ -22,4 +22,16 @@
 
 ![alt text](image2.png?raw=true "The second screenshot of program")
 
+#### NIST TESTS:
+
+![alt text](image3.png?raw=true "FIRST NIST TEST")
+
+![alt text](image4.png?raw=true "SECOND NIST TEST")
+
+#### Производительность системы:
+- 80 MB за 4 секунды (шифрование)
+- 840 MB за 53 секунды (шифрование)
+- 140 MB за 3 секунды (дешифрование)
+- 1.4 GB за 44 секунды (дешифрование)
+
 ### Сергеев Никита — @Sergeevme
