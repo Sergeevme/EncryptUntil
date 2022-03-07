@@ -1,22 +1,18 @@
 # EncryptUntil
 
-### Средство криптографической защиты, реализующее симметричное шифрование в режиме CBC (сцепления блоков).
-Средство реализовывает немного упрощенную схему алгоритма Blowfish. 
-Ключ шифрования и дешифрования генерируются во время выполнения по введенному паролю, тем самым
-ключ дешифрования не хранится в каком-либо на устройстве пользователя. Графический интерфейс реализован
-на базе Jetpack Compose, что позволяет легко модифицировать дизайн под разные устройства и операционные
-системы.
+### A cryptographic protection tool that implements symmetric encryption in CBC (block chaining) mode.
+The tool implements a simplified outline of the Blowfish algorithm. The encryption and decryption key are generated at runtime from the entered password, thus the decryption key is not stored anywhere on the user's device. The graphical interface is implemented on the basis of Jetpack Compose, which makes it easy to modify the design for different devices and operating systems.
 
-#### Стек технологий:
+#### Technology stack:
 - Java 15 (AdoptOpenJDK)
 - Kotlin 1.5.31
 - Jetpack Compose Desktop (UI)
 
-#### Реализованный функционал:
-- Процедуры генерации ключа
-- Шифрование файла на ключе
-- Дешифрование файла на ключе 
-- Разработано приложение с дружественным интерфейсом
+#### Implemented functionality:
+- Key generation procedures
+- Encryption of the file on the key
+- Decryption of the file on the key
+- Developed an application with a friendly interface
 
 ![alt text](image.png?raw=true "Screenshot of program")
 
@@ -28,10 +24,4 @@
 
 ![alt text](image4.png?raw=true "SECOND NIST TEST")
 
-#### Производительность системы:
-- 80 MB за 4 секунды (шифрование)
-- 840 MB за 53 секунды (шифрование)
-- 140 MB за 3 секунды (дешифрование)
-- 1.4 GB за 44 секунды (дешифрование)
-
-### Сергеев Никита — @Sergeevme
+### Sergeev Nikita — @Sergeevme
