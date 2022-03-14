@@ -24,4 +24,4 @@ The tool implements a simplified outline of the Blowfish algorithm. The encrypti
 
 ![alt text](image4.png?raw=true "SECOND NIST TEST")
 
-### Sergeev Nikita — @Sergeevme
+### Sergeev Nikita — [@Sergeevme](https://github.com/Sergeevme)
